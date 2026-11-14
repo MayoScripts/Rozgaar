@@ -1,0 +1,77 @@
+# rozgaar profile: everything about YOU lives in this file, not in the code.
+#
+# `rozgaar init` copies this example to ~/.rozgaar/profile.yaml. Edit that
+# copy; it stays on your machine. The person below is fictional.
+
+candidate:
+  name: Alex Rivera
+
+# Skills you can defend in an interview. Free text is fine; common names are
+# resolved through a shared taxonomy, so "Postgres" also covers "PostgreSQL"
+# and "Power BI" also covers "DAX". Matching is whole-word.
+skills:
+  - Python
+  - SQL
+  - PostgreSQL
+  - pandas
+  - Excel
+  - Tableau
+  - Power BI
+  - dashboards
+  - data modeling
+  - ETL
+  - dbt
+  - statistics
+  - A/B testing
+  - Git
+  - AWS
+  - stakeholder management
+
+# Concrete, true facts about your work, tagged with the skills they prove.
+# Used to suggest what to lead with for each opening. Never invent numbers.
+experience:
+  - org: Northwind Logistics
+    role: Data Analyst
+    facts:
+      - text: Built 12 Tableau dashboards used weekly by operations leadership
+        tags: [Tableau, dashboards, stakeholder management]
+      - text: Rewrote nightly SQL reporting jobs as dbt models, cutting runtime from 3h to 25m
+        tags: [SQL, dbt, ETL, data modeling]
+  - org: Graduate capstone
+    role: Analyst
+    facts:
+      - text: Designed an A/B test analysis framework in Python for a campus app (40k users)
+        tags: [Python, A/B testing, statistics]
+
+search:
+  # A posting's title must contain one of these (whole-word, case-insensitive).
+  roles:
+    - data analyst
+    - product analyst
+    - analytics engineer
+    - business intelligence
+    - bi analyst
+  # Most years of experience you can credibly claim. Postings asking for
+  # max_years + 2 or more are skipped; "senior" titles must ask <= max_years.
+  max_years: 3
+  max_age_days: 30
+  # Skip postings whose location (or JD body) is clearly outside the US.
+  us_only: true
+  # Skip postings whose text contains any of these phrases.
+  exclude_phrases:
+    - security clearance
+    - ts/sci
+  # Skip these companies (substring match on the company name).
+  blocked_companies: []
+
+# Company boards to watch. Find a company's slug with
+# `rozgaar discover "Company Name"`.
+boards:
+  greenhouse: [stripe]
+  lever: [spotify]
+  ashby: [ramp]
+
+# Optional: LLM-based JD parsing (pip install 'rozgaar[llm]' and set
+# ANTHROPIC_API_KEY). Without it, a built-in heuristic parser is used.
+llm:
+  model: claude-haiku-4-5

@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "rozgaar"
+version = "0.1.0"
+description = "Find job openings straight from company ATS boards and grade how well each one fits you."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "MayoScripts" }]
+keywords = ["jobs", "job-search", "greenhouse", "lever", "ashby", "ats", "llm"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Office/Business",
+]
+dependencies = [
+    "requests>=2.31",
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+rozgaar = "rozgaar.cli:main"
+
+[project.urls]
+Source = "https://github.com/MayoScripts/rozgaar"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/rozgaar"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+ignore = ["RUF001"]  # en-dashes in salary strings are intentional
